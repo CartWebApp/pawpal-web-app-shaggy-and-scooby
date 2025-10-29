@@ -71,6 +71,48 @@ h1 {
 }
 
 .notification-header {
-    margin-left:3em;
+    margin-left:6em;
+    font-size:2.5em;
+}
+
+.main-h3 {
+    font-size:2em;
+    margin-left:1em;
+}
+
+.main-date {
+    font-weight: bold;
+    font-size:2.5em;
+    margin-left:7em;
+    margin-top:0em;
+    margin-bottom:0.5em;
+}
+.meal {
+    font-size:2.5em;
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+    gap:1em;
+}
+
+.food-img {
+    width:10em;
+    height:10em;
+    border-radius:.5em;
+    object-fit:cover;
+    margin-bottom:3em;
+    border-color:black;
+    border-width:5px;
+    border-style:solid;
+}
+
+.log-all-button {
+    display:inline-block;
+    padding:0.5em 1em;
+    margin-top:1em;
+    background-color:#035862;
+    color:white;
+    text-decoration:none;
+    border-radius:0.5em;
     font-size:1.5em;
 }
