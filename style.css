@@ -26,7 +26,6 @@ h1 {
 .header {
     display:grid;
     grid-template:1fr 1fr/ 1fr 1fr 1fr 1fr 1fr;
-    gap:2.4rem;
     position:relative;
     background: lightgray 50% / cover no-repeat
 }
@@ -44,7 +43,7 @@ h1 {
 
 
 .header-img {
-    width:18.7vw;
+    width:18vw;
     filter:brightness(0.8);
     opacity: 0.48;
 }
@@ -219,4 +218,13 @@ h1 {
     border-color:black;
     border-width:5px;
     border-style:solid;
+}
+
+summary {
+
+    align-self:flex-end;
+}
+
+details {
+    align-self:flex-end;
 }
