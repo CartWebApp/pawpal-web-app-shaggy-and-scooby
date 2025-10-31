@@ -3,6 +3,23 @@ body {
     font-family:calibri,'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+@media screen and (max-width:1664px){
+    body {
+    }
+    .pet-health-tips {
+        width:90%;
+    }
+
+    .medications {
+        width:50%;
+    }
+
+    .trends {
+        width:50%;
+    }
+}
+
+
 nav {
     display:flex;
     justify-content:space-around;
@@ -310,4 +327,16 @@ h2 {
     background-color:#C5D1DD;
     margin-right:120em;
     margin-left:2em;
+}
+
+.slider-wrapper {
+    position:relative;
+    max-width:48em;
+    margin:0 auto;
+}
+
+.slider {
+    display:flex;
+    aspect-ratio:1/1;
+    overflow-x: auto;
 }
