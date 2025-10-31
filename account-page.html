@@ -3,10 +3,11 @@
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <title>PawPal</title> 
 </head>
 
 <body>
-<nav class="nav">
+    <nav class="nav">
         <a href="menu.html">
             <svg class="nav-button" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                 width="24px" fill="#e3e3e3">
@@ -48,31 +49,36 @@
         </a>
     </nav>
     <header>
-        <img src="bruno-photo.jpg" height="1000px" />
-        
+        <h2>Your Pets</h2>
+        <header class="header-account-page">
     </header>
+    <figure class="bruno-figure">
+        <img class="bruno-photo" src="bruno-photo.svg" width=250px height=250px aspect-ratio="1/1" alt="Bruno-photo">
+        <figcaption>
+            <p>Bruno</p>
+            <p>Age: 2 years old</p>
+            <p>Golden Retriever</p>
+        </figcaption>
+    </figure>
     <section>
         <h2>Bruno Summary</h2>
         <p>What Bruno needs for today is his twice a day medications, his 10 minute walk, and 5 chocolate bars!</p>
     </section>
-    
-    <section>
-        <h2>Medications</h2>
-        <p>Today</p>
-        <p>8:00 a.m</p>
-        <p>10mg of Famotidine</p>
-        <p>8:00 p.m</p>
-        <p>5mg of Immunosuppressants</p>
-        <button>Log All</button>
+    <h2>Medications</h2>
+    <section class="medications">
+        <p class="main-medications-p">Today</p>
+        <p class="below-main-meds-p">8:00 a.m</p>
+        <p class="below-main-meds-p2">10mg of Famotidine</p>
+        <p class="below-main-meds-p">8:00 p.m</p>
+        <p class="below-main-meds-p2">5mg of Immunosuppressants</p>
+        <a class="log-all-button" href="#">Log All</a>
     </section>
-
-    <section>
         <h2>Trends</h2>
-        <p>Heart Rate</p>
-        <p>Range
-            65-165 BPM
-            October 12-18, 2025
-        </p>
+    <section class="trends">
+        <p class="below-main-trends">Heart Rate</p>
+        <p class="below-main-trends-p">Range</p>
+            <p class="below-main-trends-p2">65-165 BPM</p>
+            <p class="below-main-trends-p2">October 12-18, 2025</p>
     </section>
 
 
