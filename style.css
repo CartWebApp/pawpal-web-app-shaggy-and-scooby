@@ -426,3 +426,75 @@ h2 {
 .walk-p {
     margin-left:2em;
 }
+
+.number-addresss {
+    display:flex;
+    flex-direction:row;
+    position:relative;
+    overflow:none;
+    justify-content:center;
+}
+
+.rating-img {
+    width:40%;
+    margin:0 auto;
+}
+
+.slider {
+    width:110%;
+    display:flex;
+    gap:3em;
+    overflow-x: auto;
+    margin: 3em auto;
+    scroll-behavior:smooth;
+    anchor-name: --slider;
+    scroll-snap-type:x mandatory;
+
+}
+
+.slider::-webkit-scrollbar {
+    display:none;
+}
+
+.slider.slider::scroll-button(right):disabled, .slider::scroll-button(left):disabled {
+    opacity:0.5;
+    cursor:auto;
+}
+
+.slider::scroll-button(right) {
+    content:'⭢';
+    border:none;
+    background-color:#034449;
+    color:white;
+    font-size:3em;
+    height:60px;
+    width:60px;
+    border-radius:50%;
+    padding-bottom:.1em;
+    cursor:pointer;
+    position:fixed;
+    position-anchor: --slider;
+    position-area:right center;
+    translate:30%;
+}
+
+.slider::scroll-button(left) {
+    content:'⭠';
+    border:none;
+    background-color:#034449;
+    color:white;
+    font-size:3em;
+    height:60px;
+    width:60px;
+    border-radius:50%;
+    padding-bottom:.1em;
+    cursor:pointer;
+    position:fixed;
+    position-anchor: --slider;
+    position-area:left center;
+    translate:-20%;
+}
+
+.container {
+    scroll-snap-align: start;
+}
