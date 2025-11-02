@@ -4,8 +4,6 @@ body {
 }
 
 @media screen and (max-width:1664px){
-    body {
-    }
     .pet-health-tips {
         width:90%;
     }
@@ -17,6 +15,26 @@ body {
     .trends {
         width:50%;
     }
+}
+
+@media (max-width: 600px) {
+    body {
+        background-color: red;
+    }
+
+
+    .addresses {
+        display:grid;
+        grid-template-rows:1fr;
+    }
+
+    .vet-info {
+        display:grid;
+        grid-template-rows: 1fr 1fr;
+        margin:0 auto;
+        padding:0em;
+    }
+
 }
 
 
@@ -44,7 +62,10 @@ h1 {
     display:grid;
     grid-template:1fr 1fr/ 1fr 1fr 1fr 1fr 1fr;
     position:relative;
-    background: lightgray 50% / cover no-repeat
+    background: lightgray 50% / cover no-repeat;
+    justify-content: space-between;
+    justify-items: center;
+    gap:3.75em
 }
 
 .header-logo {
@@ -88,36 +109,44 @@ h1 {
 }
 
 .notification-header {
-    margin-left:6em;
+    margin-left:3em;
     font-size:2.5em;
 }
 
 .main-h3 {
-    font-size:2em;
-    margin-left:1em;
+    font-size:4em;
+    margin-left:3.5em;
 }
 
 .main-date {
     font-weight: bold;
-    font-size:2.5em;
-    margin-left:7em;
+    font-size:3.5em;
+    margin-left:4.5em;
     margin-top:0em;
     margin-bottom:0.5em;
 }
 .meal {
     font-size:2.5em;
     display:flex;
-    justify-content:space-around;
-    flex-direction:row;
-    gap:1em;
+    margin-left:8em;
+    flex-direction:column;
+    gap:.5em;
 }
 
+.meal-p {
+    margin-left:2em;
+    gap:0em;
+}
+
+
 .food-img {
-    width:10em;
-    height:10em;
+    align-self:flex-end;
+    margin-top:-6em;
+    margin-right:10em;
+    width:7em;
+    height:7em;
     border-radius:.5em;
     object-fit:cover;
-    margin-bottom:3em;
     border-color:black;
     border-width:5px;
     border-style:solid;
@@ -125,13 +154,15 @@ h1 {
 
 .log-all-button {
     display:inline-block;
+    max-width:2.7em;
     padding:0.5em 1em;
     margin-top:1em;
     background-color:#035862;
     color:white;
     text-decoration:none;
     border-radius:0.5em;
-    font-size:1.5em;
+    font-size:1em;
+    align-self:flex-start;
 }
 
 
@@ -265,7 +296,8 @@ details {
     border-radius: 25px;;
     background-color:#D9D9D9;
     padding:23px;
-    margin-top:-15em;
+    margin-top:-11em;
+    margin-left:5em;
     }
 }
 
@@ -291,8 +323,9 @@ figcaption {
 .medications {
     border-radius: .5em;
     background-color: #C5D1DD;
-    margin-right:80vw;
-    margin-left:2em;
+    margin-left:7em;
+    width:60%;
+    padding:1em;
 }
 
 .main-medications-p {
@@ -318,30 +351,31 @@ figcaption {
 .below-main-trends-p {
     font-weight:700;
     font-size:2em;
-    margin-left:1em;
 }
 
 .below-main-trends-p2 {
     font-weight:700;
     font-size:2em;
-    margin-left:1em;
 }
 
-
-.log-all-button {
-
+.bruno-bio {
+    font-size:1.3em;
+    margin-left:6em;
+    margin-top:-1em;
 }
 
 h2 {
     font-size:2.5em;
-    margin-left:1em;
 }
 
+
 .trends {
+    display:flex;
+    flex-direction:column;
     border-radius:.5em;
     background-color:#C5D1DD;
-    margin-right:80vw;;
-    margin-left:2em;
+    width:70%;
+    padding:1em;
 }
 
 .slider-wrapper {
@@ -361,6 +395,7 @@ h2 {
     height: 50px;
     background-color:#034449;
     border-radius:50em;
+    align-self:flex-end;
 
 }
 
@@ -368,4 +403,26 @@ h2 {
     min-width:100%;
     height:60%;
     object-fit:contain;
+}
+
+.reminders {
+    margin: 0 auto;
+}
+
+.main-info {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items:center
+}
+
+.walk {
+    display:flex;
+    flex-direction:column;
+    font-size:2.5em;
+    gap:.5em;
+    margin-left:8em;
+}
+
+.walk-p {
+    margin-left:2em;
 }
