@@ -48,8 +48,9 @@
         <h3 class="header-h3">Add Your First Pet!</h3>
     </header>
 
+    <main class="main-first-pet">
     <section class="first-pet">
-        <p class="first-pet-p">Pet Name</p>
+        <p class="first-pet-p">Pet Name:</p>
         <input>
         <p class="first-pet-p">Pet Type:</p>
         <p class="first-pet-p2">I have a
@@ -77,9 +78,22 @@
                 </option>
             </select>
         </p>
-        <a href=""></a>
+        <p class="first-pet-p">Breed:</p>
+        <input>
     </section>
 
+    <section>
+        <label class="img-section" for="image">
+            <svg width="247" height="247" viewBox="0 0 247 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M239.25 162V213.5C239.25 220.329 236.537 226.879 231.708 231.708C226.879 236.537 220.329 239.25 213.5 239.25H33.25C26.4207 239.25 19.8711 236.537 15.042 231.708C10.2129 226.879 7.5 220.329 7.5 213.5V162M187.75 71.875L123.375 7.5M123.375 7.5L59 71.875M123.375 7.5V162"
+                    stroke="#1E1E1E" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <p class="first-pet-p">Upload Pet Image</p>
+        </label>
+        <input type="file" id="image" />
+    </section>
+</main>
 </body>
 
 </html>
