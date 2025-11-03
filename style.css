@@ -498,3 +498,13 @@ h2 {
 .container {
     scroll-snap-align: start;
 }
+
+.header-h3 {
+    font-size:4em;;
+    margin-left:3.7em
+}
+
+
+.first-pet-p {
+    font-size:3em;
+}
