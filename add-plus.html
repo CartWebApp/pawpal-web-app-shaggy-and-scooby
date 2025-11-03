@@ -5,6 +5,41 @@
     <title>Add New Pet</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="pawpal-logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to handle form submission
+        function addPet(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get form data
+            const petName = document.getElementById('pet-name').value;
+            const petDescription = document.getElementById('pet-description').value;
+            const petImage = document.getElementById('pet-image').files[0];
+
+            if (petName && petDescription && petImage) {
+                // Create a FileReader to read the image as a data URL
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const petData = {
+                        name: petName,
+                        description: petDescription,
+                        image: e.target.result // Base64 image string
+                    };
+
+                    // Save pet data to localStorage
+                    const pets = JSON.parse(localStorage.getItem('pets')) || [];
+                    pets.push(petData);
+                    localStorage.setItem('pets', JSON.stringify(pets));
+
+                    // Redirect to dashboard
+                    window.location.href = 'grouped-bar.html';
+                };
+                reader.readAsDataURL(petImage);
+            } else {
+                alert('Please fill out all fields and upload an image.');
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -80,6 +115,7 @@
         </p>
         <p class="first-pet-p">Breed:</p>
         <input>
+        <a class="submit-pet-info" href="account-page.html">Submit Pet Info</a>
     </section>
 
     <section>
