@@ -25,7 +25,7 @@ body {
 
     .addresses {
         display:grid;
-        grid-template-rows:1fr;
+        grid-template-columns:1fr !important;
     }
 
     .vet-info {
@@ -115,22 +115,24 @@ h1 {
 
 .main-h3 {
     font-size:4em;
-    margin-left:3.5em;
+    text-align:left;
 }
 
 .main-date {
     font-weight: bold;
     font-size:3.5em;
-    margin-left:4.5em;
+    margin-left:1.1em;
     margin-top:0em;
     margin-bottom:0.5em;
 }
 .meal {
     font-size:2.5em;
     display:flex;
-    margin-left:8em;
-    flex-direction:column;
+    flex-direction:row;
     gap:.5em;
+    align-items:center;
+    margin-left:2em;
+    justify-content:space-around;
 }
 
 .meal-p {
@@ -140,9 +142,7 @@ h1 {
 
 
 .food-img {
-    align-self:flex-end;
-    margin-top:-6em;
-    margin-right:10em;
+    align-self:center;
     width:7em;
     height:7em;
     border-radius:.5em;
@@ -382,6 +382,7 @@ h2 {
     position:relative;
     max-width:48em;
     margin:0 auto;
+
 }
 
 .slider {
@@ -406,7 +407,9 @@ h2 {
 }
 
 .reminders {
-    margin: 0 auto;
+    max-width:50%;
+    background-color: #C5D1DD;
+    margin:0 auto;
 }
 
 .main-info {
@@ -420,7 +423,6 @@ h2 {
     flex-direction:column;
     font-size:2.5em;
     gap:.5em;
-    margin-left:8em;
 }
 
 .walk-p {
@@ -449,6 +451,11 @@ h2 {
     scroll-behavior:smooth;
     anchor-name: --slider;
     scroll-snap-type:x mandatory;
+
+    & > img {
+        scroll-snap-align: start;
+        width:50em;
+    }
 
 }
 
@@ -506,5 +513,54 @@ h2 {
 
 
 .first-pet-p {
-    font-size:3em;
+    font-size:2em;
+}
+
+.bruno-bio-p {
+    font-size:1.5em;
+}
+
+.daily-walks {
+    background-color: #C5D1DD;
+    border-radius: .5em;
+    margin-left:0em;
+    margin-right:0em;
+    position:absolute;
+}
+
+.log-all-button-2 {
+    display:inline-block;
+    max-width:2.7em;
+    padding:0.5em 1em;
+    margin-top:1em;
+    background-color:#035862;
+    color:white;
+    text-decoration:none;
+    border-radius:0.5em;
+    font-size:1em;
+    align-self:center;
+}
+
+.reminders-tab {
+
+}
+
+.reminder {
+    display:flex;
+    flex-direction: column;
+    gap:.5em;
+    font-size:1em;
+}
+
+select,option {
+    font-size:1em;
+}
+
+.first-pet {
+    margin-left:17em;
+}
+
+.first-pet-p2 {
+    margin-left:2em;
+    font-size:2em;
 }
