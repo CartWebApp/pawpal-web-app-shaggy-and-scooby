@@ -73,14 +73,9 @@ h1 {
     margin-right:3em;
 }
 
-.notification-header {
-    margin-left:3em;
-    font-size:2.5em;
-}
-
 .main-h3 {
     font-size:4em;
-    margin-left:1.7em;
+    margin-left:3.5em;
 }
 
 .main-date {
@@ -291,6 +286,7 @@ figcaption {
     margin-left:7em;
     width:60%;
     padding:1em;
+    justify-content: center;
 }
 
 .main-medications-p {
@@ -359,10 +355,34 @@ h2 {
 .checkbox {
     width: 50px;
     height: 50px;
-    background-color:#034449;
-    border-radius:50em;
+    background-color:#035862;
+    border:none;
+    border-radius:0.5em;
     align-self:flex-end;
+    cursor:pointer;
+    appearance:none;
+    -webkit-appearance:none;
+    position:relative;
+    transition:background-color 0.2s ease;
+}
 
+.checkbox:hover {
+    background-color:#046d7a;
+}
+
+.checkbox:checked {
+    background-color:#035862;
+}
+
+.checkbox:checked::after {
+    content:'✓';
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    color:white;
+    font-size:2em;
+    font-weight:bold;
 }
 
 .banner-photo {
@@ -374,7 +394,10 @@ h2 {
 .reminders {
     background-color: #C5D1DD;
     width:40%;
+    height:40%;
     border-radius:.5em;
+    padding:1em;
+
 }
 
 .main-info {
@@ -391,7 +414,8 @@ h2 {
 }
 
 .walk-p {
-    margin-left:2em;
+    margin-left:4.5em;
+    max-width:65%;
 }
 
 .number-addresss {
@@ -489,8 +513,8 @@ h2 {
     background-color: #C5D1DD;
     border-radius: .5em;
     width:40%;
-    height:50%;
-    padding:2em;
+    height:40%;
+    padding:1em;
 }
 
 .log-all-button-2 {
@@ -511,7 +535,8 @@ h2 {
     align-content:center;
     justify-content:space-around;
     max-width:100%;
-    gap:2em;
+    margin-left:8em;
+    margin-right:6em;
 
 }
 
@@ -525,9 +550,6 @@ h2 {
 select,option {
     font-size:1em;
     border-radius: .5em;
-}
-
-.first-pet {
 }
 
 .first-pet-p2 {
@@ -565,6 +587,16 @@ input[type=file] {
     align-items:center;
 }
 
+.add-pet-form {
+    display:flex;
+    justify-content: space-around;
+}
+
+.main-date {
+    margin-left:.5em;
+}
+
+
 .submit-pet-info {
     display:inline-block;
     max-width:7em;
@@ -574,34 +606,56 @@ input[type=file] {
     color:white;
     text-decoration:none;
     border-radius:0.5em;
-    font-size:2.5em;
+    font-size:2em;
     justify-self:center;
     text-align:center;
 }
 
+.trends-info { 
+    display:flex;
+    width:80%;
+    justify-content:space-between;
+    margin:0 auto;
+}
 
-@media screen and (max-width:1664px){
-    .pet-health-tips {
-        width:90%;
-    }
+.trends-info > article > p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-size:2em;
+    
+}
 
-    .medications {
-        width:50%;
-    }
+.header-p {
+    font-size:2em;
+    margin-left:7.35em;
+}
 
-    .trends {
-        width:50%;
-    }
+.trends-info > article {
+     width:30%;
+}
+
+.trends-info > article > p:first-of-type {
+    font-weight:600;
+}
+
+.trends-info > article > p:last-of-type {
+    font-size:1.7em;
+    text-align: left;
+}
+
+.trends-info > article > img {
+    width:100%;
+}
+
+.main-time {
+    margin-left:2em;
 }
 
 @media (max-width: 680px) {
     * {
     }
-    body {@media screen and (max-width:1664px){
-        .pet-health-tips {
-            width:90%;
-        }
-    
+
+
         .medications {
             width:50%;
         }
@@ -609,15 +663,6 @@ input[type=file] {
         .trends {
             width:50%;
         }
-    }
-    
-    @media (max-width: 600px) {
-        * {
-        }
-        body {
-            background-color: red;
-        }
-    
     
         .addresses {
             display:grid;
@@ -638,14 +683,233 @@ input[type=file] {
             align-items:center;
             margin-top:1.5em;
         }
+
+    .vet-info {
+        display:grid;
+        grid-template-columns: 1fr;
+        margin:0 auto;
+        padding:0em;
+        align-items:center;
+        margin-left:0em;
+        margin-right:0em;
     }
-        background-color: rgb(255, 255, 255);
+
+    .vet-info-h2 {
+        align-items:center;
     }
+
+    .vet-info-header {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .vet-info-note {
+        padding:2em;
+        font-size:1.2em;
+    } 
+
+    .notification-header {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .bruno-figure {
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        text-align: center;
+
+        & > div {
+        margin-left:0em;
+        margin-right:0em;
+        }
+    }
+
+    .bruno-bio {
+        margin:0em;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .main-info {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:2em;
+        margin:0 auto;
+        width:100%;
+    }
+
+    .main-info > .medications,
+    .main-info > .trends {
+        width:90%;
+        margin-left:0;
+        margin-right:0;
+    }
+
+    .vet-info-h2-2 {
+        text-align:center;
+    }
+
+    .vet-info-p {
+        text-align: center;
+    }
+
+
+    .pawpal-info {
+        display:flex;
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .pawpal-info > img {
+        margin-right:0em;
+    }
+
+    .pawpal-info > p {
+        margin-right:0em;
+        margin-left:0em;
+        font-size:2.5em;
+    }
+
+    .header {
+        display:none;
+    }
+
+    .header-h3 {
+        margin:0em;
+        text-align:center;
+    }
+
+    .header-p {
+        margin:0em;
+        text-align:center;
+        width:80%;
+    }
+
+    .trends-info {
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        margin:0em;
+        width:100%;
+    }
+    .trends-info > article > img {
+    width:90%;
+    margin:0 auto;
+    align-items:center;
+    align-self:center;
+    padding:.5em;
+}
+
+.trends-info > article {
+     width:100%;
+}
+
+
+.trends-info > article > p {
+    padding:.5em;
+}
+
+.reminders-tab {
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    gap:2em;
+    align-items:center;
+}
+
+.reminders-tab > .reminders, .reminders-tab > .daily-walks {
+    width:90%;
+    margin:0 auto;
+}
+
+.food-img {
+   display:none;
+}
+
+.main-first-pet {
+    display:flex;
+    flex-direction:column;
+    gap:5em;
+}
+
+.first-pet {
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    text-align:center;
+}
+
+input {
+   height:50%;
+}
+
+.banner-photo {
+    width:100%;
+    height: auto;
+}
+
+}
+
+
+@media (max-width: 1024px) {
+    
+    .reminders-tab {
+        margin-left:auto;
+        margin-right:auto;
+        justify-content:center;
+        align-items:center;
+        padding:0 2em;
+    }
+
+    .reminder {
+          margin-left:0;
+    }
+    
+    .medications {
+            width:50%;
+        }
+    
+        .trends {
+            width:50%;
+        }
+    
+        .addresses {
+            display:grid;
+            grid-template-columns:1fr;
+        }
+    
+        .vet-info {
+            display:grid;
+            grid-template-columns: 1fr;
+            margin:0 auto;
+            padding:0em;
+            align-items:center;
+            margin-left:0em;
+            margin-right:0em;
+        }
+    
+        .vet-info-h2 {
+            align-items:center;
+            margin-top:1.5em;
+        }
 
 
     .addresses {
         display:grid;
         grid-template-columns:1fr;
+    }
+
+    .main-h3 {
+        text-align: center;
+        margin-left:0em;
     }
 
     .vet-info {
@@ -703,7 +967,17 @@ input[type=file] {
     .main-info {
         display:flex;
         flex-direction:column;
+        align-items:center;
+        gap:2em;
+        margin:0 auto;
+        width:100%;
+    }
 
+    .main-info > .medications,
+    .main-info > .trends {
+        width:90%;
+        margin-left:0;
+        margin-right:0;
     }
 
     .vet-info-h2-2 {
@@ -713,5 +987,120 @@ input[type=file] {
     .vet-info-p {
         text-align: center;
     }
+
+
+    .pawpal-info {
+        display:flex;
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .pawpal-info > img {
+        margin-right:0em;
+    }
+
+    .pawpal-info > p {
+        margin-right:0em;
+        margin-left:0em;
+        font-size:2.5em;
+    }
+
+    .trends-info > article > p {
+        margin-left:2.3em;
+    }
+
+    .trends-info > article > img {
+       display:flex;
+       justify-content: center;
+    }
+
+    .header {
+        display:none;
+    }
+
+    .header-h3 {
+        margin:0em;
+        text-align:center;
+    }
+
+    .header-p {
+        margin:0em;
+        text-align:center;
+        width:100%;
+    }
+
+    .trends-info {
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        margin:0em;
+        width:100%;
+    }
+    .trends-info > article > img {
+    width:90%;
+    margin:0 auto;
+    align-items:center;
+    align-self:center;
+    padding:.5em;
 }
 
+.trends-info > article {
+     width:100%;
+}
+
+
+.trends-info > article > p {
+    padding:.5em;
+}
+
+.reminders-tab {
+    display:flex;
+    flex-direction:column;
+    gap:2em;
+    align-items:center;
+}
+
+.reminders-tab > .reminders, .reminders-tab > .daily-walks {
+    width:90%;
+    margin:0 auto;
+}
+
+.food-img {
+   display:none;
+}
+
+.main-first-pet {
+    display:flex;
+    flex-direction:column;
+    gap:5em;
+}
+
+.first-pet {
+    display:flex;
+    flex-direction:column;
+    margin:0 auto;
+    text-align:center;
+}
+
+input {
+   height:50%;
+}
+
+.banner-photo {
+    width:100%;
+    height: auto;
+}
+
+.submit-pet-info {
+    justify-self:center;
+    margin:0 auto;
+
+}
+
+.log-all-button {
+    justify-self:center;
+
+}
+
+}

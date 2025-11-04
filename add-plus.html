@@ -132,4 +132,85 @@
 </main>
 </body>
 
+<!-- JS: capture inputs without changing layout; save to localStorage; redirect to dashboard -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('image');
+        const label = document.querySelector('.img-section');
+        
+        // Add image preview functionality
+        if (fileInput && label) {
+            fileInput.addEventListener('change', function (e) {
+                const file = e.target.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (ev) {
+                        // Hide the SVG and text
+                        const svg = label.querySelector('svg');
+                        const p = label.querySelector('p');
+                        if (svg) svg.style.display = 'none';
+                        if (p) p.style.display = 'none';
+                        
+                        // Remove any existing preview
+                        const existingPreview = label.querySelector('.image-preview');
+                        if (existingPreview) existingPreview.remove();
+                        
+                        // Create and display the preview image
+                        const preview = document.createElement('img');
+                        preview.className = 'image-preview';
+                        preview.src = ev.target.result;
+                        preview.style.width = '247px';
+                        preview.style.height = '247px';
+                        preview.style.objectFit = 'cover';
+                        preview.style.borderRadius = '12px';
+                        preview.style.border = '2px solid #1E1E1E';
+                        label.appendChild(preview);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        const submitLink = document.querySelector('.submit-pet-info');
+        if (!submitLink) return;
+        submitLink.addEventListener('click', function (e) {
+            // Intercept link click to process form data programmatically
+            e.preventDefault();
+
+            const firstPetSection = document.querySelector('.first-pet');
+            if (!firstPetSection) {
+                window.location.href = 'account-page.html';
+                return;
+            }
+
+            const textInputs = firstPetSection.querySelectorAll('input');
+            const selectEl = firstPetSection.querySelector('select');
+            const file = fileInput ? fileInput.files[0] : null;
+
+            const petName = textInputs[0] ? textInputs[0].value.trim() : '';
+            const petBreed = textInputs[1] ? textInputs[1].value.trim() : '';
+            const petType = selectEl ? selectEl.value : '';
+
+            if (!petName || !petType || !petBreed || !file) {
+                alert('Please enter name, type, breed, and upload an image.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (ev) {
+                const petData = {
+                    name: petName,
+                    type: petType,
+                    breed: petBreed,
+                    image: ev.target.result
+                };
+                const pets = JSON.parse(localStorage.getItem('pets') || '[]');
+                pets.push(petData);
+                localStorage.setItem('pets', JSON.stringify(pets));
+                window.location.href = 'account-page.html';
+            };
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
 </html>

@@ -59,11 +59,11 @@
     </figure>
     <section class="bruno-bio">
         <h2>Bruno Summary</h2>
-        <p class="bruno-bio-p">What Bruno needs for today is his twice a day medications, his 10 minute walk, and 5 chocolate bars!</p>
+        <p class="bruno-bio-p">What Bruno needs for today is his two medications, his 10 minute walk, and 5 chocolate bars!</p>
     </section>
     <section class="main-info">
         <section class="medications">
-            <h2 clsas="main-info-h2">Medications</h2>
+            <h2 class="main-info-h2">Medications</h2>
             <p class="main-medications-p">Today</p>
             <p class="below-main-meds-p">8:00 a.m</p>
             <input class="checkbox" type="checkbox">
@@ -81,35 +81,170 @@
         </section>
     </section>
 
-    <script>
-        // Function to load pets from localStorage and display them
-        function loadPets() {
-            const pets = JSON.parse(localStorage.getItem('pets')) || [];
-            const petContainer = document.getElementById('pet-container');
     
-            pets.forEach(pet => {
-                const petCard = document.createElement('div');
-                petCard.className = 'pet-card';
-    
-                petCard.innerHTML = `
-                    <img src="${pet.image}" alt="${pet.name}" class="pet-image">
-                    <h3>${pet.name}</h3>
-                    <p>${pet.description}</p>
-                `;
-    
-                petContainer.appendChild(petCard);
-            });
+
+<script>
+// JS-only: inject a 'View Other Pets' button over the banner and display pets on click
+document.addEventListener('DOMContentLoaded', function () {
+  const header = document.querySelector('header');
+  const bannerImg = header ? header.querySelector('.banner-photo') : null;
+  if (!header || !bannerImg) return;
+
+  // Create the toggle button (styled like other buttons)
+  const btn = document.createElement('button');
+  btn.id = 'view-other-pets-btn';
+  btn.className = 'submit-pet-info';
+  btn.type = 'button';
+  btn.textContent = 'View Other Pets';
+  btn.style.position = 'fixed';
+  btn.style.zIndex = '999';
+
+  document.body.appendChild(btn);
+
+    // Stabilize positioning with rAF throttling + resize observer
+    let scheduled = false;
+    function positionBtnNow() {
+        const rect = bannerImg.getBoundingClientRect();
+            const padding = 12; // small inset from edges
+            const top = window.scrollY + rect.bottom - btn.offsetHeight - padding;
+            // Anchor to banner's right edge but clamp within viewport for small screens
+            let leftClient = rect.right - btn.offsetWidth - padding; // client coords
+            // Clamp within viewport width
+            leftClient = Math.min(leftClient, window.innerWidth - btn.offsetWidth - padding);
+            leftClient = Math.max(leftClient, padding);
+            const left = window.scrollX + leftClient;
+            btn.style.top = top + 'px';
+            btn.style.left = left + 'px';
+        const isVisible = rect.width > 0 && rect.height > 0;
+        btn.style.display = isVisible ? 'inline-block' : 'none';
+    }
+    function schedulePosition() {
+        if (scheduled) return;
+        scheduled = true;
+        requestAnimationFrame(() => {
+            scheduled = false;
+            positionBtnNow();
+        });
+    }
+
+  // Initial measure after paint
+  requestAnimationFrame(() => {
+        positionBtnNow();
+  });
+    window.addEventListener('resize', schedulePosition);
+    window.addEventListener('scroll', schedulePosition, { passive: true });
+    // Recalculate when the banner image loads or resizes intrinsically
+    if (!bannerImg.complete) {
+        bannerImg.addEventListener('load', schedulePosition, { once: true });
+    }
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(schedulePosition);
+        ro.observe(bannerImg);
+    }
+
+        // Floating panel for pets (does not affect layout)
+        let panel = null;
+        let petsList = null;
+        function ensurePanel() {
+            if (!panel) {
+                panel = document.createElement('div');
+                panel.id = 'other-pets-panel';
+                panel.style.position = 'fixed';
+                panel.style.zIndex = '998';
+                panel.style.background = '#fff';
+                panel.style.border = '1px solid #ccc';
+                panel.style.borderRadius = '12px';
+                panel.style.boxShadow = '0 2px 12px rgba(0,0,0,0.12)';
+                panel.style.padding = '1rem';
+                panel.style.maxWidth = '90vw';
+                panel.style.width = 'min(640px, 90vw)';
+                panel.style.maxHeight = '60vh';
+                panel.style.overflowY = 'auto';
+                panel.style.display = 'none';
+                document.body.appendChild(panel);
+
+                petsList = document.createElement('section');
+                petsList.id = 'pets-list';
+                petsList.style.display = 'flex';
+                petsList.style.flexWrap = 'wrap';
+                petsList.style.gap = '1rem';
+                panel.appendChild(petsList);
+            }
+            return panel;
         }
-    
-        // Call loadPets on page load
-        window.onload = loadPets;
-    </script>
-    
-    <div id="pet-container"></div>
 
+        function positionPanelNow() {
+            if (!panel) return;
+                const rect = bannerImg.getBoundingClientRect();
+                const padding = 12;
+                const top = window.scrollY + rect.bottom + padding; // just below the banner
+                // Responsive width/position for <=680px
+                const isMobile = window.innerWidth <= 680;
+                if (isMobile) {
+                    panel.style.maxWidth = 'calc(100vw - 24px)';
+                    panel.style.width = 'calc(100vw - 24px)';
+                } else {
+                    panel.style.maxWidth = '90vw';
+                    panel.style.width = 'min(640px, 90vw)';
+                }
+                // Align right edge with banner/right viewport while clamping within viewport
+                let leftClient = rect.right - panel.offsetWidth - padding; // client coords
+                leftClient = Math.min(leftClient, window.innerWidth - panel.offsetWidth - padding);
+                leftClient = Math.max(leftClient, padding);
+                const left = window.scrollX + leftClient;
+                panel.style.top = top + 'px';
+                panel.style.left = left + 'px';
+        }
 
+    function renderPets() {
+        ensurePanel();
+    const pets = JSON.parse(localStorage.getItem('pets') || '[]');
+        petsList.innerHTML = '';
+    if (pets.length === 0) {
+            const p = document.createElement('p');
+            p.textContent = 'No pets added yet.';
+            petsList.appendChild(p);
+      return;
+    }
+    pets.forEach(pet => {
+      const card = document.createElement('div');
+      card.style.border = '1px solid #ccc';
+      card.style.borderRadius = '12px';
+      card.style.padding = '1rem';
+      card.style.background = '#fff';
+      card.style.width = '220px';
+      card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.07)';
+      card.innerHTML = `
+        <img src="${pet.image}" alt="${pet.name}" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;"/>
+        <h3 style="margin: 0.5rem 0 0.2rem 0;">${pet.name}</h3>
+        <p style="margin: 0;">Type: ${pet.type}</p>
+        <p style="margin: 0;">Breed: ${pet.breed}</p>
+      `;
+            petsList.appendChild(card);
+    });
+  }
 
+  btn.addEventListener('click', function(){
+        ensurePanel();
+        renderPets();
+        panel.style.display = 'block';
+        // Position panel after content sizes are known
+        requestAnimationFrame(() => {
+            positionPanelNow();
+        });
+  });
 
-
-
+    // Keep panel aligned on scroll/resize as well
+    window.addEventListener('scroll', schedulePosition, { passive: true });
+    window.addEventListener('resize', schedulePosition);
+    function schedulePanelPosition() { requestAnimationFrame(positionPanelNow); }
+    window.addEventListener('scroll', schedulePanelPosition, { passive: true });
+    window.addEventListener('resize', schedulePanelPosition);
+    // Also react to media query changes if supported
+    if (window.matchMedia) {
+        const mq = window.matchMedia('(max-width: 680px)');
+        mq.addEventListener ? mq.addEventListener('change', schedulePanelPosition) : mq.addListener(schedulePanelPosition);
+    }
+});
+</script>
 </body>
