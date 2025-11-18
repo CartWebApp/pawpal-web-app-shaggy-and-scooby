@@ -175,6 +175,7 @@ h1 {
     border-radius: .5em;
     padding:1em;
     margin:0 auto;
+    max-width:70%;
 
 }
 
@@ -497,7 +498,7 @@ h2 {
 
 .header-h3 {
     font-size:4em;;
-    margin-left:3.7em
+    margin-left:10%;
 }
 
 
@@ -627,7 +628,7 @@ input[type=file] {
 
 .header-p {
     font-size:2em;
-    margin-left:7.35em;
+    margin-left:10%;
 }
 
 .trends-info > article {
