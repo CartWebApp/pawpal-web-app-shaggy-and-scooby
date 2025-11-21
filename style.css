@@ -93,7 +93,7 @@ p + img {
     justify-content:space-around;
 }
 
-.meal-p {
+.meal > div > p:nth-child(2) {
     margin-left:2em;
     gap:0em;
 }
@@ -245,7 +245,7 @@ details {
     align-self:flex-end;
 }
 
-.bruno-figure {
+figure {
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -260,7 +260,7 @@ details {
     }
 }
 
-.bruno-photo {
+figure > div > img {
     border-radius:50%;
     object-fit:cover;
     flex-shrink:0;
@@ -390,7 +390,7 @@ h2 {
     object-fit:contain;
 }
 
-.reminders {
+.reminders-tab > main {
     background-color: #C5D1DD;
     width:40%;
     height:40%;
